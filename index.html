@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>En Memoria de José Fernando Rodríguez · 1954–2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph — iMessage / WhatsApp / Slack link previews -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="En Memoria de José Fernando Rodríguez · 1954–2026" />
+  <meta property="og:description" content="Artesano. Narrador. Aventurero. Amado Esposo. Padre Devoto. — Tampa, Florida" />
+  <meta property="og:image"       content="https://i.imgur.com/oWqfj9U.jpg" />
+  <meta property="og:image:width"  content="927" />
+  <meta property="og:image:height" content="1160" />
+  <meta property="og:locale"      content="es_US" />
+
+  <!-- Twitter / iMessage large-image card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="En Memoria de José Fernando Rodríguez · 1954–2026" />
+  <meta name="twitter:description" content="Artesano. Narrador. Aventurero. Amado Esposo. Padre Devoto. — Tampa, Florida" />
+  <meta name="twitter:image"       content="https://i.imgur.com/oWqfj9U.jpg" />
+
+  <style>
+    /* ── Variables ────────────────────────────────────────── */
+    :root {
+      --green-deep:  #162820;
+      --green-mid:   #1e3328;
+      --green-light: #2a4235;
+      --gold:        #c9a44e;
+      --gold-light:  #dfc07a;
+      --gold-pale:   #f0dfa0;
+      --cream:       #f4edda;
+      --cream-dim:   #c8b98a;
+      --white:       #ffffff;
+    }
+
+    /* ── Reset ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--green-deep);
+      color: var(--cream);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--green-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── Ornament SVG ─────────────────────────────────────── */
+    .ornament {
+      display: block;
+      margin: 0 auto;
+      width: 180px;
+      height: 24px;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1;
+      opacity: .7;
+    }
+    .ornament-sm {
+      width: 120px;
+      height: 18px;
+    }
+
+    /* ── Full-page border ─────────────────────────────────── */
+    .page-border {
+      position: fixed;
+      inset: 12px;
+      border: 1px solid rgba(201,164,78,.35);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ── Fade-in animation ────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .9s ease both; }
+    .delay-1 { animation-delay: .2s; }
+    .delay-2 { animation-delay: .45s; }
+    .delay-3 { animation-delay: .65s; }
+    .delay-4 { animation-delay: .85s; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 60px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(42,66,53,.55) 0%, transparent 70%),
+        var(--green-deep);
+      overflow: hidden;
+    }
+
+    /* subtle texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    .hero-memory-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.65rem, 1.5vw, .8rem);
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .hero-name-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 9vw, 6rem);
+      color: var(--gold-light);
+      line-height: 1.1;
+      text-shadow: 0 2px 24px rgba(201,164,78,.35);
+      margin: 8px 0 0;
+    }
+
+    .hero-surname {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 5vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: .18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      margin: 28px auto;
+      width: clamp(200px, 38vw, 320px);
+    }
+
+    .hero-photo-wrap::before,
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-photo-wrap::before {
+      inset: -14px;
+      border: 1px solid rgba(201,164,78,.28);
+      border-radius: 4px;
+    }
+    .hero-photo-wrap::after {
+      inset: -7px;
+      border: 1px solid rgba(201,164,78,.18);
+      border-radius: 4px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 3px;
+      display: block;
+      box-shadow: 0 8px 60px rgba(0,0,0,.7);
+      filter: sepia(.12) contrast(1.05);
+    }
+
+    .hero-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.6rem, 1.4vw, .78rem);
+      letter-spacing: .32em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+      margin: 6px 0;
+    }
+
+    .hero-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--gold);
+      letter-spacing: .18em;
+      margin: 14px 0 6px;
+    }
+
+    .hero-scripture {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(.9rem, 1.8vw, 1.1rem);
+      color: var(--cream-dim);
+      max-width: 480px;
+      margin: 18px auto 0;
+      line-height: 1.6;
+    }
+
+    .hero-scripture cite {
+      display: block;
+      font-style: normal;
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: .5;
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+    .scroll-hint span {
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .scroll-hint svg { stroke: var(--gold); fill: none; width: 18px; }
+
+    /* ── Section wrapper ──────────────────────────────────── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 70px 28px;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .38em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      color: var(--gold-light);
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.3;
+    }
+
+    /* ── Divider ──────────────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 48px 0;
+      opacity: .55;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .divider::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    /* ── Language toggle ──────────────────────────────────── */
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      padding: 8px 22px;
+      cursor: pointer;
+      transition: background .25s, color .25s;
+    }
+    .lang-btn:first-child { border-radius: 2px 0 0 2px; }
+    .lang-btn:last-child  { border-radius: 0 2px 2px 0; }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--gold);
+      color: var(--green-deep);
+    }
+
+    /* ── Obituary text ────────────────────────────────────── */
+    .obit-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      line-height: 1.9;
+      color: var(--cream);
+      text-align: justify;
+    }
+    .obit-text p { margin-bottom: 1.4em; }
+    .obit-text p:last-child { margin-bottom: 0; }
+
+    .obit-signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--cream-dim);
+      text-align: right;
+      margin-top: 2em;
+    }
+
+    .obit-text[hidden] { display: none; }
+
+    /* ── Scroll-iron decorative strip ────────────────────── */
+    .ironwork {
+      display: block;
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 600px;
+      height: 40px;
+      opacity: .45;
+    }
+
+    /* ── Three pillars ────────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(201,164,78,.2);
+      border-radius: 4px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: background .3s, border-color .3s;
+    }
+    .pillar:hover {
+      background: rgba(201,164,78,.05);
+      border-color: rgba(201,164,78,.45);
+    }
+
+    .pillar-icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 16px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.2;
+    }
+
+    .pillar-title {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pillar-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--cream-dim);
+      line-height: 1.65;
+    }
+
+    /* ── Service cards ────────────────────────────────────── */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(201,164,78,.22);
+      border-top: 3px solid var(--gold);
+      border-radius: 0 0 4px 4px;
+      padding: 32px 28px;
+    }
+
+    .service-card-type {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .service-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .service-card-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .service-card-body strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .directions-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,164,78,.35);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .directions-link:hover {
+      color: var(--gold-pale);
+      border-color: var(--gold-pale);
+    }
+    .directions-link svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ── Closing scripture ────────────────────────────────── */
+    .closing {
+      text-align: center;
+      padding: 80px 28px;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(42,66,53,.4) 0%, transparent 70%);
+    }
+
+    .closing-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      color: var(--cream);
+      max-width: 680px;
+      margin: 24px auto 12px;
+      line-height: 1.7;
+    }
+
+    .closing-cite {
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .28em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(201,164,78,.18);
+      text-align: center;
+      padding: 36px 24px;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--cream-dim);
+      letter-spacing: .1em;
+    }
+
+    .footer-years {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    /* ── Map embed ────────────────────────────────────────── */
+    .map-wrap {
+      margin-top: 22px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(201,164,78,.2);
+      position: relative;
+    }
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 200px;
+      border: none;
+      filter: invert(92%) hue-rotate(180deg) saturate(.55) brightness(.82);
+    }
+    /* gold tint overlay so it feels part of the design */
+    .map-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(201,164,78,.04);
+      pointer-events: none;
+    }
+
+    /* ── Carousel ─────────────────────────────────────────── */
+    .carousel-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 28px;
+    }
+
+    .carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid rgba(201,164,78,.22);
+      margin-top: 40px;
+      background: rgba(0,0,0,.25);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(.08) contrast(1.04);
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 28px 20px;
+      background: linear-gradient(transparent, rgba(16,30,22,.85));
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      text-align: center;
+    }
+
+    /* placeholder slide */
+    .carousel-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(201,164,78,.04);
+      color: rgba(201,164,78,.3);
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .carousel-placeholder svg {
+      width: 36px; height: 36px;
+      stroke: rgba(201,164,78,.3); fill: none; stroke-width: 1;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(22,40,32,.75);
+      border: 1px solid rgba(201,164,78,.35);
+      color: var(--gold);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+    .carousel-btn:hover { background: rgba(201,164,78,.15); border-color: var(--gold); }
+    .carousel-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .carousel-btn-prev { left: 14px; }
+    .carousel-btn-next { right: 14px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .carousel-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(201,164,78,.25);
+      border: 1px solid rgba(201,164,78,.4);
+      cursor: pointer;
+      transition: background .25s;
+    }
+    .carousel-dot.active { background: var(--gold); }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 540px) {
+      section { padding: 52px 20px; }
+      .carousel-section { padding: 52px 20px; }
+      .page-border { inset: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed page border (decorative) -->
+  <div class="page-border"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════ -->
+  <header class="hero">
+    <p class="hero-memory-text fade-up">En Amorosa Memoria de</p>
+
+    <h1>
+      <span class="hero-name-script fade-up delay-1">Jose Fernando</span><br />
+      <span class="hero-surname fade-up delay-1">Rodríguez</span>
+    </h1>
+
+    <svg class="ornament fade-up delay-2" viewBox="0 0 180 24">
+      <line x1="0" y1="12" x2="55" y2="12"/>
+      <path d="M55,12 Q65,4 75,12 Q85,20 95,12 Q105,4 115,12 Q125,20 135,12"/>
+      <line x1="135" y1="12" x2="180" y2="12"/>
+      <circle cx="90" cy="12" r="2.5" fill="#c9a44e" stroke="none"/>
+    </svg>
+
+    <div class="hero-photo-wrap fade-up delay-2">
+      <img
+        src="https://i.imgur.com/oWqfj9U.jpg"
+        alt="José Fernando Rodríguez"
+        class="hero-photo"
+        onerror="this.style.display='none'; this.parentNode.style.height='320px'; this.parentNode.style.background='rgba(201,164,78,.07)'"
+      />
+    </div>
+
+    <p class="hero-tagline fade-up delay-3">Artesano &nbsp;·&nbsp; Narrador &nbsp;·&nbsp; Aventurero</p>
+    <p class="hero-tagline fade-up delay-3">Hijo &nbsp;·&nbsp; Hermano &nbsp;·&nbsp; Esposo &nbsp;·&nbsp; Padre &nbsp;·&nbsp; Abuelo</p>
+
+    <p class="hero-dates fade-up delay-3">1954 &mdash; 2026</p>
+
+    <blockquote class="hero-scripture fade-up delay-4">
+      &ldquo;El dolor y los suspiros huirán.&rdquo;
+      <cite>Isaías 35:10</cite>
+    </blockquote>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg viewBox="0 0 18 24" stroke-width="1.5"><polyline points="4,10 9,16 14,10"/></svg>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       WHO HE WAS — three pillars
+  ══════════════════════════════════════════════════════════ -->
+  <section>
+    <p class="section-label">Su Legado</p>
+    <h2 class="section-title">Un Hombre de Fe, Arte y Aventura</h2>
+
+    <!-- scroll ironwork SVG -->
+    <svg class="ironwork" viewBox="0 0 600 40" fill="none" stroke="#c9a44e" stroke-width=".8">
+      <line x1="0" y1="20" x2="60" y2="20"/>
+      <path d="M60,20 C70,8 80,8 90,20 C100,32 110,32 120,20 C130,8 140,8 150,20 C160,32 170,32 180,20 C190,8 200,8 210,20 C220,32 230,32 240,20"/>
+      <circle cx="300" cy="20" r="5"/>
+      <path d="M360,20 C350,32 340,32 330,20 C320,8 310,8 300,20"/>
+      <path d="M360,20 C370,8 380,8 390,20 C400,32 410,32 420,20 C430,8 440,8 450,20 C460,32 470,32 480,20 C490,8 500,8 510,20 C520,32 530,32 540,20"/>
+      <line x1="540" y1="20" x2="600" y2="20"/>
+    </svg>
+
+    <div class="pillars">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 38 38">
+          <!-- hammer / craft -->
+          <rect x="16" y="4" width="8" height="14" rx="2" />
+          <line x1="19" y1="18" x2="10" y2="32" stroke-linecap="round"/>
+          <path d="M12,28 Q6,34 8,36 Q10,38 14,33"/>
+        </svg>
+        <p class="pillar-title">El Artesano</p>
+        <p class="pillar-text">Sus espirales de hierro forjado aún adornan las casas de West Tampa — arte silencioso que sobrevivirá generaciones.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 38 38">
+          <!-- open book / storyteller -->
+          <path d="M19,8 Q12,6 6,8 L6,32 Q12,30 19,32"/>
+          <path d="M19,8 Q26,6 32,8 L32,32 Q26,30 19,32"/>
+          <line x1="19" y1="8" x2="19" y2="32"/>
+          <line x1="9" y1="14" x2="16" y2="14"/>
+          <line x1="9" y1="19" x2="16" y2="19"/>
+          <line x1="9" y1="24" x2="16" y2="24"/>
+        </svg>
+        <p class="pillar-title">El Narrador</p>
+        <p class="pillar-text">Sus cuentos de "los buenos tiempos," siempre con un toque de exageración, llenaban cada habitación de carcajadas y recuerdos.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 38 38">
+          <!-- road / compass -->
+          <circle cx="19" cy="19" r="13"/>
+          <polygon points="19,8 22,18 19,16 16,18" fill="#c9a44e" stroke="none"/>
+          <polygon points="19,30 16,20 19,22 22,20" fill="rgba(201,164,78,.4)" stroke="none"/>
+          <circle cx="19" cy="19" r="2" fill="#c9a44e" stroke="none"/>
+        </svg>
+        <p class="pillar-title">El Aventurero</p>
+        <p class="pillar-text">46 de 50 estados, con un mapa de papel y el corazón de un explorador. El camino aún no ha terminado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       OBITUARY
+  ══════════════════════════════════════════════════════════ -->
+  <section id="obituario">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Obituario</p>
+    <h2 class="section-title">José Fernando Rodríguez<br/><small style="font-size:.6em;letter-spacing:.06em">5 de enero, 1954 — 3 de mayo, 2026</small></h2>
+
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="showLang('es', this)">Español</button>
+      <button class="lang-btn"        onclick="showLang('en', this)">English</button>
+    </div>
+
+    <!-- Spanish -->
+    <div class="obit-text" id="obit-es">
+      <p>Jose Fernando Rodriguez, un hombre de resiliencia, fe y devoción inquebrantable hacia su familia, falleció dejando un legado que vivirá en cada vida que tocó.</p>
+      <p>Nacido de Zenón y Clotilde "Ita" Rodríguez, la historia de Jose estuvo marcada por el sacrificio desde una edad temprana. A tan solo 15 años, fue reclutado por el ejército cubano y permaneció solo en la isla para que sus padres y hermanos pudieran venir a los Estados Unidos en busca de una vida mejor. Durante esos años de separación, encontró su fe, algo que se convertiría en su ancla y guía a lo largo de cada capítulo que siguió.</p>
+      <p>Jose realizó valientemente su viaje hacia la libertad durante el éxodo del Mariel, decidido a construir una vida definida por la oportunidad y el propósito. Finalmente estableció su hogar en Tampa, Florida, donde encontró al amor de su vida, su hermosa esposa, Lourdes. Juntos formaron una familia arraigada en la fortaleza, el amor y la perseverancia.</p>
+      <p>Jose era soldador de oficio, pero para quienes lo conocían, era un artista. Su característico trabajo en hierro con diseños de espirales aún puede verse por todo West Tampa, piezas silenciosas y duraderas de su artesanía que siguen siendo parte de la comunidad que ayudó a formar. Incluso la casa que construyó desde cero se convirtió en símbolo de su dedicación, brindando un lugar donde su familia pudo crecer, reunirse y crear recuerdos para toda la vida.</p>
+      <p>Era un narrador de corazón, conocido por compartir recuerdos de "los buenos tiempos," a menudo con un poco de exageración, justo lo suficiente para hacer reír a todos un poco más fuerte. Sus historias nunca eran solo historias; eran momentos, traídos a la vida de una manera que solo él podía lograr.</p>
+      <p>Jose también tenía un profundo amor por los viajes y la aventura. Mientras criaba a sus hijos, estableció la tradición de que nunca habría vacaciones de verano o invierno sin un viaje. Con nada más que un auto cargado y un mapa de papel en mano, simplemente decía: "Vámonos." Su meta era visitar los 50 estados, y con orgullo llegó a 46, creando incontables recuerdos en el camino.</p>
+      <p>Por encima de todo, Jose será recordado por su fortaleza, sus sacrificios, su fe y su profundo amor por su familia. Su vida no siempre fue fácil, pero fue significativa, y fue suya.</p>
+      <p>Le precedieron en la muerte sus padres, Zenón y Clotilde "Ita" Rodríguez; su hermano Jorge Rodríguez y la esposa de Jorge, Julie Butler; su cuñado Brent Reynolds; y su nieto Ben. Le sobreviven su esposa Lourdes; su hijo José Jr. y su nuera Elva; su hija Raquel y su yerno Kris; sus nietos Caleb y Frankie; sus hermanos María Elena, Zenón y Carie; y muchos queridos sobrinos, sobrinas, y sobrinos nietos.</p>
+      <p>Creemos que el camino no ha terminado, que llegará a ver los 4 estados que le faltan en un nuevo mundo donde "El dolor y los suspiros huirán."</p>
+      <p class="obit-signature">— Lourdes, José Jr., y Raquel</p>
+    </div>
+
+    <!-- English -->
+    <div class="obit-text" id="obit-en" hidden>
+      <p>Jose Fernando Rodriguez, a man of resilience, faith, and unwavering devotion to his family, passed away leaving behind a legacy that will live on in every life he touched.</p>
+      <p>Born to Zenón and Clotilde "Ita" Rodríguez, Jose's story was one marked by sacrifice from an early age. At just 15 years old, he was drafted into the Cuban military and remained on the island alone so that his parents and siblings could come to the United States in search of a better life. During those years of separation, he found his faith, something that would become his anchor and guide through every chapter that followed.</p>
+      <p>Jose courageously made his journey to freedom during the Mariel boatlift, determined to build a life defined by opportunity and purpose. He eventually made his home in Tampa, Florida, where he found the love of his life, his beautiful wife, Lourdes. Together, they built a family rooted in strength, love, and perseverance.</p>
+      <p>Jose was a welder by trade, but to those who knew him, he was an artist. His signature scroll ironwork can still be seen throughout West Tampa, quiet, lasting pieces of his craftsmanship that continue to stand as part of the community he helped shape. Even the home he built from the ground up became a symbol of his dedication, providing a place where his family could grow, gather, and create lifelong memories.</p>
+      <p>He was a storyteller at heart, known for sharing memories of the "good old days," often with a little embellishment, just enough to make everyone laugh a little harder. His stories were never just stories; they were moments, brought to life in a way only he could.</p>
+      <p>Jose also had a deep love for travel and adventure. While raising his children, he made it a tradition that there would never be a summer or winter break without a trip. With nothing more than a packed car and a AAA guidebook in hand, he would simply say, "Let's go." His goal was to see all 50 states, and he proudly made it to 46, creating countless memories along the way.</p>
+      <p>Above all else, Jose will be remembered for his strength, his sacrifices, his faith, and his deep love for his family. His life was not always easy, but it was meaningful, and it was his.</p>
+      <p>He was preceded in death by his parents, Zenón and Clotilde "Ita" Rodríguez; his brother Jorge Rodríguez and Jorge's wife Julie Butler; his brother-in-law Brent Reynolds; and his grandson Ben. He is survived by his wife Lourdes; his son José Jr. and daughter-in-law Elva; his daughter Raquel and son-in-law Kris; his grandchildren Caleb and Frankie; his siblings María Elena, Zenón, and Carie; and many beloved nieces, nephews, and great-nieces and great-nephews.</p>
+      <p>We believe the road is not finished — he'll make it to see the missing 4 states in a new world where "grief and sighing will flee away."</p>
+      <p class="obit-signature">— Lourdes, José Jr., and Raquel</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════════════════════ -->
+  <section id="servicios">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Servicios Fúnebres · Funeral Services</p>
+    <h2 class="section-title">Acompáñenos a Honrar su Memoria</h2>
+
+    <div class="services">
+
+      <!-- Visitation -->
+      <div class="service-card">
+        <p class="service-card-type">Visitation · Velorio</p>
+        <h3 class="service-card-title">Curlew Hills Memory Gardens</h3>
+        <div class="service-card-body">
+          <strong>Viernes, 8 de mayo de 2026</strong><br/>
+          Friday, May 8, 2026<br/><br/>
+          6:00 PM – 8:00 PM<br/><br/>
+          1750 Curlew Road<br/>
+          Palm Harbor, FL 34683
+        </div>
+        <a
+          class="directions-link"
+          href="https://www.google.com/maps?saddr&daddr=28.0506239000000000,-82.7542670999999900"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Get Directions
+        </a>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=1750+Curlew+Road+Palm+Harbor+FL+34683&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Curlew Hills Memory Gardens"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Funeral Talk -->
+      <div class="service-card">
+        <p class="service-card-type">Funeral Talk · Servicio</p>
+        <h3 class="service-card-title">Kingdom Hall of Jehovah's Witnesses</h3>
+        <div class="service-card-body">
+          <strong>Sábado, 9 de mayo de 2026</strong><br/>
+          Saturday, May 9, 2026<br/><br/>
+          3:30 PM – 4:30 PM<br/><br/>
+          6404 N Church Ave<br/>
+          Tampa, FL 33614
+        </div>
+        <a
+          class="directions-link"
+          href="https://maps.app.goo.gl/1ik1Ec1xA5wVGkfs9"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Get Directions
+        </a>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=6404+N+Church+Ave+Tampa+FL+33614&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Kingdom Hall of Jehovah's Witnesses"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PHOTO CAROUSEL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="carousel-section">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Galería · Gallery</p>
+    <h2 class="section-title">Momentos que Perduran</h2>
+
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- Slide 1 — main portrait -->
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/oWqfj9U.jpg" alt="José Fernando Rodríguez" />
+          <div class="carousel-caption">José Fernando Rodríguez · 1954–2026</div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/CovsSrn.jpg" alt="José Fernando Rodríguez" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/TfSMnK6.jpg" alt="José Fernando Rodríguez" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/hYkdXCR.jpg" alt="José Fernando Rodríguez" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/FRKzklY.jpg" alt="José Fernando Rodríguez" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/aLuP1Je.jpg" alt="José Fernando Rodríguez" />
+        </div>
+
+      </div>
+
+      <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+      </button>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CLOSING SCRIPTURE
+  ══════════════════════════════════════════════════════════ -->
+  <div class="closing">
+    <svg class="ornament" viewBox="0 0 180 24">
+      <line x1="0" y1="12" x2="55" y2="12"/>
+      <path d="M55,12 Q65,4 75,12 Q85,20 95,12 Q105,4 115,12 Q125,20 135,12"/>
+      <line x1="135" y1="12" x2="180" y2="12"/>
+      <circle cx="90" cy="12" r="2.5" fill="#c9a44e" stroke="none"/>
+    </svg>
+
+    <blockquote class="closing-quote">
+      &ldquo;Grief and sighing will flee away.&rdquo;<br/>
+      <em style="font-size:.85em;color:var(--cream-dim)">&ldquo;El dolor y los suspiros huirán.&rdquo;</em>
+    </blockquote>
+    <p class="closing-cite">Isaías / Isaiah 35:10</p>
+
+    <svg class="ornament" style="margin-top:32px;" viewBox="0 0 180 24">
+      <line x1="0" y1="12" x2="55" y2="12"/>
+      <path d="M55,12 Q65,4 75,12 Q85,20 95,12 Q105,4 115,12 Q125,20 135,12"/>
+      <line x1="135" y1="12" x2="180" y2="12"/>
+      <circle cx="90" cy="12" r="2.5" fill="#c9a44e" stroke="none"/>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer>
+    <p class="footer-name">José Fernando Rodríguez</p>
+    <p class="footer-years">1954 &nbsp;&mdash;&nbsp; 2026</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPT
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Carousel ── */
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    const slides = track ? track.children : [];
+    let current = 0;
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      Array.from(slides).forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.onclick = () => goTo(i);
+        dotsWrap.appendChild(d);
+      });
+    }
+
+    function goTo(n) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current)
+      );
+    }
+
+    function moveCarousel(dir) { goTo(current + dir); }
+
+    /* auto-advance every 5 s */
+    if (slides.length) {
+      buildDots();
+      setInterval(() => moveCarousel(1), 5000);
+    }
+
+    /* ── Fade-up observer ── */
+    function showLang(lang, btn) {
+      document.getElementById('obit-es').hidden = (lang !== 'es');
+      document.getElementById('obit-en').hidden = (lang !== 'en');
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    /* Intersection-observer fade-up for service cards and pillars */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll('.pillar, .service-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .7s ease, transform .7s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
