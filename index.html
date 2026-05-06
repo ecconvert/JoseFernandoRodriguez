@@ -355,16 +355,49 @@
     }
 
     .pillar {
+      perspective: 1200px;
+      min-height: 320px;
+    }
+
+    .pillar-card {
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+      transform-style: preserve-3d;
+      transition: transform .7s cubic-bezier(.2,.8,.2,1);
+      cursor: pointer;
+    }
+
+    .pillar.is-flipped .pillar-card {
+      transform: rotateY(180deg);
+    }
+
+    .pillar-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: rgba(255,255,255,.03);
       border: 1px solid rgba(201,164,78,.2);
       border-radius: 4px;
-      padding: 32px 24px;
+      padding: 32px 24px 26px;
       text-align: center;
-      transition: background .3s, border-color .3s;
+      backface-visibility: hidden;
+      transition: background .3s, border-color .3s, box-shadow .3s;
+      box-shadow: 0 10px 36px rgba(0,0,0,.12);
     }
-    .pillar:hover {
+
+    .pillar-card:hover .pillar-face,
+    .pillar:focus-within .pillar-face {
       background: rgba(201,164,78,.05);
       border-color: rgba(201,164,78,.45);
+    }
+
+    .pillar-back {
+      transform: rotateY(180deg);
     }
 
     .pillar-icon {
@@ -390,6 +423,30 @@
       font-size: 1rem;
       color: var(--cream-dim);
       line-height: 1.65;
+    }
+
+    .pillar-hint {
+      margin-top: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: .58rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(240,223,160,.72);
+    }
+
+    .pillar-toggle {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+      z-index: 3;
+    }
+
+    .pillar-toggle:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 5px;
     }
 
     /* ── Service cards ────────────────────────────────────── */
@@ -437,6 +494,59 @@
     .service-card-body strong {
       color: var(--gold-light);
       font-weight: 500;
+    }
+
+    .service-extra {
+      margin: 0 0 22px;
+      padding: 18px 18px 16px;
+      background: rgba(201,164,78,.06);
+      border: 1px solid rgba(201,164,78,.18);
+      border-radius: 4px;
+    }
+
+    .service-extra-label {
+      font-family: 'Cinzel', serif;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .service-extra p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .zoom-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,164,78,.35);
+      padding-bottom: 2px;
+    }
+
+    .zoom-link:hover {
+      color: var(--white);
+      border-color: var(--gold-pale);
+    }
+
+    .zoom-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
     }
 
     .directions-link {
@@ -645,6 +755,8 @@
       section { padding: 52px 20px; }
       .carousel-section { padding: 52px 20px; }
       .page-border { inset: 6px; }
+      .pillar,
+      .pillar-card { min-height: 340px; }
     }
   </style>
 </head>
@@ -714,47 +826,107 @@
     </svg>
 
     <div class="pillars">
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 915 580" style="stroke: var(--gold); fill: none; stroke-width: 32; stroke-linecap: round; stroke-linejoin: round;">
-          <!-- Fibonacci spiral based on the Wikimedia Commons construction -->
-          <path d="M 18.898132,563.14957 A 543.94263,543.75146 0 0 1 562.84077,19.398132" />
-          <path d="M -899.02731,355.46605 A 336.18655,336.06839 0 0 1 -562.84075,19.397675" transform="scale(-1,1)" />
-          <path d="m -563.14906,-691.27235 a 207.68251,207.75557 0 0 1 207.68251,-207.75556" transform="matrix(0,-1,-1,0,0,0)" />
-          <path d="M 562.84128,-434.76319 A 128.43051,128.38536 0 0 1 691.27179,-563.14854" transform="scale(1,-1)" />
-          <path d="m 562.84184,434.7637 a 79.324539,79.296654 0 0 1 79.32454,-79.29665" />
-          <path d="m -691.27137,404.55478 a 49.105476,49.088211 0 0 1 49.10548,-49.08821" transform="scale(-1,1)" />
-          <path d="m -691.27178,-404.55426 a 30.218561,30.207939 0 0 1 30.21856,-30.20794" transform="scale(-1)" />
-          <path d="m 642.16632,-415.8829 a 18.886414,18.879776 0 0 1 18.88641,-18.87978" transform="scale(1,-1)" />
-          <path d="m 642.16683,415.88342 a 11.331649,11.327665 0 0 1 11.33164,-11.32766" />
-          <path d="m -661.05231,412.10681 a 7.5542655,7.5516105 0 0 1 7.55426,-7.55161" transform="scale(-1,1)" />
-          <path d="m -661.05276,-412.10736 a 3.7768829,3.7755551 0 0 1 3.77688,-3.77556" transform="scale(-1)" />
-        </svg>
-        <p class="pillar-title">El Artesano</p>
-        <p class="pillar-text">Sus espirales de hierro forjado aún adornan las casas de West Tampa — arte silencioso que sobrevivirá generaciones.</p>
+      <div class="pillar" data-flip-card>
+        <div class="pillar-card">
+          <div class="pillar-face pillar-front" aria-hidden="false">
+            <svg class="pillar-icon" viewBox="0 0 915 580" style="stroke: var(--gold); fill: none; stroke-width: 32; stroke-linecap: round; stroke-linejoin: round;">
+              <!-- Fibonacci spiral based on the Wikimedia Commons construction -->
+              <path d="M 18.898132,563.14957 A 543.94263,543.75146 0 0 1 562.84077,19.398132" />
+              <path d="M -899.02731,355.46605 A 336.18655,336.06839 0 0 1 -562.84075,19.397675" transform="scale(-1,1)" />
+              <path d="m -563.14906,-691.27235 a 207.68251,207.75557 0 0 1 207.68251,-207.75556" transform="matrix(0,-1,-1,0,0,0)" />
+              <path d="M 562.84128,-434.76319 A 128.43051,128.38536 0 0 1 691.27179,-563.14854" transform="scale(1,-1)" />
+              <path d="m 562.84184,434.7637 a 79.324539,79.296654 0 0 1 79.32454,-79.29665" />
+              <path d="m -691.27137,404.55478 a 49.105476,49.088211 0 0 1 49.10548,-49.08821" transform="scale(-1,1)" />
+              <path d="m -691.27178,-404.55426 a 30.218561,30.207939 0 0 1 30.21856,-30.20794" transform="scale(-1)" />
+              <path d="m 642.16632,-415.8829 a 18.886414,18.879776 0 0 1 18.88641,-18.87978" transform="scale(1,-1)" />
+              <path d="m 642.16683,415.88342 a 11.331649,11.327665 0 0 1 11.33164,-11.32766" />
+              <path d="m -661.05231,412.10681 a 7.5542655,7.5516105 0 0 1 7.55426,-7.55161" transform="scale(-1,1)" />
+              <path d="m -661.05276,-412.10736 a 3.7768829,3.7755551 0 0 1 3.77688,-3.77556" transform="scale(-1)" />
+            </svg>
+            <p class="pillar-title">El Artesano</p>
+            <p class="pillar-text">Sus espirales de hierro forjado aún adornan las casas de West Tampa, arte silencioso que sobrevivirá generaciones.</p>
+            <p class="pillar-hint">Toque para ver en English</p>
+          </div>
+          <div class="pillar-face pillar-back" aria-hidden="true">
+            <svg class="pillar-icon" viewBox="0 0 915 580" style="stroke: var(--gold); fill: none; stroke-width: 32; stroke-linecap: round; stroke-linejoin: round;">
+              <path d="M 18.898132,563.14957 A 543.94263,543.75146 0 0 1 562.84077,19.398132" />
+              <path d="M -899.02731,355.46605 A 336.18655,336.06839 0 0 1 -562.84075,19.397675" transform="scale(-1,1)" />
+              <path d="m -563.14906,-691.27235 a 207.68251,207.75557 0 0 1 207.68251,-207.75556" transform="matrix(0,-1,-1,0,0,0)" />
+              <path d="M 562.84128,-434.76319 A 128.43051,128.38536 0 0 1 691.27179,-563.14854" transform="scale(1,-1)" />
+              <path d="m 562.84184,434.7637 a 79.324539,79.296654 0 0 1 79.32454,-79.29665" />
+              <path d="m -691.27137,404.55478 a 49.105476,49.088211 0 0 1 49.10548,-49.08821" transform="scale(-1,1)" />
+              <path d="m -691.27178,-404.55426 a 30.218561,30.207939 0 0 1 30.21856,-30.20794" transform="scale(-1)" />
+              <path d="m 642.16632,-415.8829 a 18.886414,18.879776 0 0 1 18.88641,-18.87978" transform="scale(1,-1)" />
+              <path d="m 642.16683,415.88342 a 11.331649,11.327665 0 0 1 11.33164,-11.32766" />
+              <path d="m -661.05231,412.10681 a 7.5542655,7.5516105 0 0 1 7.55426,-7.55161" transform="scale(-1,1)" />
+              <path d="m -661.05276,-412.10736 a 3.7768829,3.7755551 0 0 1 3.77688,-3.77556" transform="scale(-1)" />
+            </svg>
+            <p class="pillar-title">The Craftsman</p>
+            <p class="pillar-text">His scroll ironwork still graces homes across West Tampa, quiet art that will outlive generations.</p>
+            <p class="pillar-hint">Tap to return al español</p>
+          </div>
+          <button class="pillar-toggle" type="button" aria-label="Flip card for The Craftsman / El Artesano"></button>
+        </div>
       </div>
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 38 38">
-          <!-- open book / storyteller -->
-          <path d="M19,8 Q12,6 6,8 L6,32 Q12,30 19,32"/>
-          <path d="M19,8 Q26,6 32,8 L32,32 Q26,30 19,32"/>
-          <line x1="19" y1="8" x2="19" y2="32"/>
-          <line x1="9" y1="14" x2="16" y2="14"/>
-          <line x1="9" y1="19" x2="16" y2="19"/>
-          <line x1="9" y1="24" x2="16" y2="24"/>
-        </svg>
-        <p class="pillar-title">El Narrador</p>
-        <p class="pillar-text">Sus cuentos de "los buenos tiempos," siempre con un toque de exageración, llenaban cada habitación de carcajadas y recuerdos.</p>
+      <div class="pillar" data-flip-card>
+        <div class="pillar-card">
+          <div class="pillar-face pillar-front" aria-hidden="false">
+            <svg class="pillar-icon" viewBox="0 0 38 38">
+              <!-- open book / storyteller -->
+              <path d="M19,8 Q12,6 6,8 L6,32 Q12,30 19,32"/>
+              <path d="M19,8 Q26,6 32,8 L32,32 Q26,30 19,32"/>
+              <line x1="19" y1="8" x2="19" y2="32"/>
+              <line x1="9" y1="14" x2="16" y2="14"/>
+              <line x1="9" y1="19" x2="16" y2="19"/>
+              <line x1="9" y1="24" x2="16" y2="24"/>
+            </svg>
+            <p class="pillar-title">El Narrador</p>
+            <p class="pillar-text">Sus cuentos de los buenos tiempos, siempre con un toque de exageración, llenaban cada habitación de carcajadas y recuerdos.</p>
+            <p class="pillar-hint">Toque para ver en English</p>
+          </div>
+          <div class="pillar-face pillar-back" aria-hidden="true">
+            <svg class="pillar-icon" viewBox="0 0 38 38">
+              <path d="M19,8 Q12,6 6,8 L6,32 Q12,30 19,32"/>
+              <path d="M19,8 Q26,6 32,8 L32,32 Q26,30 19,32"/>
+              <line x1="19" y1="8" x2="19" y2="32"/>
+              <line x1="9" y1="14" x2="16" y2="14"/>
+              <line x1="9" y1="19" x2="16" y2="19"/>
+              <line x1="9" y1="24" x2="16" y2="24"/>
+            </svg>
+            <p class="pillar-title">The Storyteller</p>
+            <p class="pillar-text">His stories about the good old days, always with a touch of exaggeration, filled every room with laughter and memory.</p>
+            <p class="pillar-hint">Tap to return al español</p>
+          </div>
+          <button class="pillar-toggle" type="button" aria-label="Flip card for The Storyteller / El Narrador"></button>
+        </div>
       </div>
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 38 38">
-          <!-- road / compass -->
-          <circle cx="19" cy="19" r="13"/>
-          <polygon points="19,8 22,18 19,16 16,18" fill="#c9a44e" stroke="none"/>
-          <polygon points="19,30 16,20 19,22 22,20" fill="rgba(201,164,78,.4)" stroke="none"/>
-          <circle cx="19" cy="19" r="2" fill="#c9a44e" stroke="none"/>
-        </svg>
-        <p class="pillar-title">El Aventurero</p>
-        <p class="pillar-text">46 de 50 estados, con un mapa de papel y el corazón de un explorador. El camino aún no ha terminado.</p>
+      <div class="pillar" data-flip-card>
+        <div class="pillar-card">
+          <div class="pillar-face pillar-front" aria-hidden="false">
+            <svg class="pillar-icon" viewBox="0 0 38 38">
+              <!-- road / compass -->
+              <circle cx="19" cy="19" r="13"/>
+              <polygon points="19,8 22,18 19,16 16,18" fill="#c9a44e" stroke="none"/>
+              <polygon points="19,30 16,20 19,22 22,20" fill="rgba(201,164,78,.4)" stroke="none"/>
+              <circle cx="19" cy="19" r="2" fill="#c9a44e" stroke="none"/>
+            </svg>
+            <p class="pillar-title">El Aventurero</p>
+            <p class="pillar-text">Recorrió 46 de los 50 estados con un mapa de papel y el corazón de un explorador. El camino aún no ha terminado.</p>
+            <p class="pillar-hint">Toque para ver en English</p>
+          </div>
+          <div class="pillar-face pillar-back" aria-hidden="true">
+            <svg class="pillar-icon" viewBox="0 0 38 38">
+              <circle cx="19" cy="19" r="13"/>
+              <polygon points="19,8 22,18 19,16 16,18" fill="#c9a44e" stroke="none"/>
+              <polygon points="19,30 16,20 19,22 22,20" fill="rgba(201,164,78,.4)" stroke="none"/>
+              <circle cx="19" cy="19" r="2" fill="#c9a44e" stroke="none"/>
+            </svg>
+            <p class="pillar-title">The Adventurer</p>
+            <p class="pillar-text">He reached 46 of the 50 states with a paper map and the heart of an explorer. The road is not finished yet.</p>
+            <p class="pillar-hint">Tap to return al español</p>
+          </div>
+          <button class="pillar-toggle" type="button" aria-label="Flip card for The Adventurer / El Aventurero"></button>
+        </div>
       </div>
     </div>
   </section>
@@ -860,7 +1032,7 @@
 
       <!-- Funeral Talk -->
       <div class="service-card">
-        <p class="service-card-type">Funeral Talk · Servicio</p>
+        <p class="service-card-type">Funeral Talk · Discurso</p>
         <h3 class="service-card-title">Kingdom Hall of Jehovah's Witnesses</h3>
         <div class="service-card-body">
           <strong>Sábado, 9 de mayo de 2026</strong><br/>
@@ -868,6 +1040,20 @@
           3:30 PM – 4:30 PM<br/><br/>
           6404 N Church Ave<br/>
           Tampa, FL 33614
+        </div>
+        <div class="service-extra">
+          <p class="service-extra-label">Conéctese por Zoom · Join by Zoom</p>
+          <p>ID de reunión / Meeting ID: 898 441 4572</p>
+          <p>Código de acceso / Passcode: 640421</p>
+          <a
+            class="zoom-link"
+            href="https://us02web.zoom.us/j/8984414572?pwd=L2VZWk9aVUtreVI2djRUZC9CNjhNdz09"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h7A2.5 2.5 0 0 1 16 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 4 16.5z"/><path d="M16 10.5l4-2v7l-4-2z"/></svg>
+            Abrir Zoom / Open Zoom
+          </a>
         </div>
         <a
           class="directions-link"
@@ -1044,6 +1230,26 @@
       el.style.transform = 'translateY(24px)';
       el.style.transition = 'opacity .7s ease, transform .7s ease';
       observer.observe(el);
+    });
+
+    document.querySelectorAll('[data-flip-card]').forEach(card => {
+      const toggle = card.querySelector('.pillar-toggle');
+      const front = card.querySelector('.pillar-front');
+      const back = card.querySelector('.pillar-back');
+
+      function syncFlipState() {
+        const isFlipped = card.classList.contains('is-flipped');
+        front.setAttribute('aria-hidden', isFlipped ? 'true' : 'false');
+        back.setAttribute('aria-hidden', isFlipped ? 'false' : 'true');
+        toggle.setAttribute('aria-pressed', isFlipped ? 'true' : 'false');
+      }
+
+      toggle.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+        syncFlipState();
+      });
+
+      syncFlipState();
     });
   </script>
 </body>
