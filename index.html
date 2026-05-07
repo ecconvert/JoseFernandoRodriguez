@@ -787,11 +787,13 @@
       border: 1px solid rgba(201,164,78,.15);
       border-radius: 6px;
     }
-    .video-frame iframe {
+    .video-frame iframe,
+    .video-frame video {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
       border: none;
+      background: #000;
     }
 
     .video-caption {
@@ -1235,11 +1237,16 @@
     <h2 class="section-title">Su Vida en Movimiento</h2>
 
     <div class="video-frame">
-      <iframe
-        src="https://drive.google.com/file/d/1L5O_skNdl177ZgCQOLUaMyx2dxN8qqvd/preview"
-        allowfullscreen
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        poster="https://i.imgur.com/oWqfj9U.jpg"
         title="Video Tribute — José Fernando Rodríguez"
-      ></iframe>
+      >
+        <source src="dad-tribute.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
 
     <p class="video-caption">En memoria de un padre, esposo y abuelo amado.</p>
