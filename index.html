@@ -762,10 +762,51 @@
     }
     .carousel-dot.active { background: var(--gold); }
 
+    /* ── Video tribute section ────────────────────────────── */
+    .video-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 28px;
+      text-align: center;
+    }
+
+    .video-frame {
+      position: relative;
+      margin-top: 40px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(201,164,78,.3);
+      box-shadow: 0 12px 50px rgba(0,0,0,.55);
+      background: #000;
+    }
+    .video-frame::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      inset: -8px;
+      border: 1px solid rgba(201,164,78,.15);
+      border-radius: 6px;
+    }
+    .video-frame iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+
+    .video-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      margin-top: 22px;
+    }
+
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 540px) {
       section { padding: 52px 20px; }
       .carousel-section { padding: 52px 20px; }
+      .video-section { padding: 52px 20px; }
       .page-border { inset: 6px; }
       .pillar,
       .pillar-card { min-height: 340px; }
@@ -1175,6 +1216,34 @@
     </div>
 
     <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VIDEO TRIBUTE
+  ══════════════════════════════════════════════════════════ -->
+  <div class="video-section">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Tributo en Video · Video Tribute</p>
+    <h2 class="section-title">Su Vida en Movimiento</h2>
+
+    <div class="video-frame">
+      <iframe
+        src="https://drive.google.com/file/d/1L5O_skNdl177ZgCQOLUaMyx2dxN8qqvd/preview"
+        allow="autoplay"
+        allowfullscreen
+        title="Video Tribute — José Fernando Rodríguez"
+      ></iframe>
+    </div>
+
+    <p class="video-caption">En memoria de un padre, esposo y abuelo amado.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
