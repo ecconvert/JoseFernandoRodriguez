@@ -655,112 +655,152 @@
       pointer-events: none;
     }
 
-    /* ── Carousel ─────────────────────────────────────────── */
-    .carousel-section {
-      max-width: 900px;
+    /* ── Masonry gallery ──────────────────────────────────── */
+    .gallery-section {
+      max-width: 1300px;
       margin: 0 auto;
       padding: 70px 28px;
     }
-
-    .carousel-track-wrap {
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      border: 1px solid rgba(201,164,78,.22);
+    .masonry {
+      column-count: 4;
+      column-gap: 14px;
       margin-top: 40px;
-      background: rgba(0,0,0,.25);
     }
-
-    .carousel-track {
-      display: flex;
-      transition: transform .5s cubic-bezier(.4,0,.2,1);
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      aspect-ratio: 4/3;
-      position: relative;
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 14px;
+      cursor: pointer;
       overflow: hidden;
+      border-radius: 2px;
+      border: 1px solid rgba(201,164,78,.18);
+      transition: border-color .3s, box-shadow .3s, transform .3s;
+      background: #1a1a1a;
     }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .masonry-item img {
       display: block;
-      filter: sepia(.08) contrast(1.04);
-    }
-
-    .carousel-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px 28px 20px;
-      background: linear-gradient(transparent, rgba(16,30,22,.85));
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--cream-dim);
-      text-align: center;
-    }
-
-    /* placeholder slide */
-    .carousel-placeholder {
       width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      height: auto;
+      transition: transform .5s;
+      filter: sepia(.04) contrast(1.02);
+    }
+    .masonry-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(0,0,0,.55);
+      transform: translateY(-2px);
+    }
+    .masonry-item:hover img { transform: scale(1.04); }
+
+    @media (max-width: 1100px) { .masonry { column-count: 3; } }
+    @media (max-width: 720px)  { .masonry { column-count: 2; } }
+    @media (max-width: 460px)  { .masonry { column-count: 2; column-gap: 8px; } .masonry-item { margin-bottom: 8px; } }
+
+    /* ── Lightbox ─────────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,18,13,.96);
+      backdrop-filter: blur(8px);
+      display: none;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      background: rgba(201,164,78,.04);
-      color: rgba(201,164,78,.3);
-      font-family: 'Cinzel', serif;
-      font-size: .7rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      z-index: 1000;
+      cursor: zoom-out;
+      animation: lbFade .3s ease;
     }
-    .carousel-placeholder svg {
-      width: 36px; height: 36px;
-      stroke: rgba(201,164,78,.3); fill: none; stroke-width: 1;
+    .lightbox.open { display: flex; }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      box-shadow: 0 20px 80px rgba(0,0,0,.8);
+      border: 8px solid #f8f1de;
+      animation: lbPop .35s cubic-bezier(.4,0,.2,1);
     }
-
-    .carousel-btn {
+    @keyframes lbPop { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+    .lightbox-btn, .lightbox-close {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(22,40,32,.75);
-      border: 1px solid rgba(201,164,78,.35);
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(201,164,78,.4);
       color: var(--gold);
-      width: 44px; height: 44px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
-      transition: background .2s, border-color .2s;
-      z-index: 10;
-      backdrop-filter: blur(4px);
+      transition: background .2s;
     }
-    .carousel-btn:hover { background: rgba(201,164,78,.15); border-color: var(--gold); }
-    .carousel-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
-    .carousel-btn-prev { left: 14px; }
-    .carousel-btn-next { right: 14px; }
+    .lightbox-btn:hover, .lightbox-close:hover { background: rgba(201,164,78,.2); }
+    .lightbox-btn { top: 50%; transform: translateY(-50%); width: 50px; height: 50px; }
+    .lightbox-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+    .lightbox-close { top: 20px; right: 20px; width: 42px; height: 42px; }
+    .lightbox-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+    }
 
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 18px;
+    /* ── Life Stories ──────────────────────────────────────── */
+    .stories-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 70px 28px;
     }
-    .carousel-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: rgba(201,164,78,.25);
-      border: 1px solid rgba(201,164,78,.4);
-      cursor: pointer;
-      transition: background .25s;
+    .stories-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.08rem, 2vw, 1.22rem);
+      line-height: 1.95;
+      color: var(--cream);
     }
-    .carousel-dot.active { background: var(--gold); }
+    .stories-text p { margin-bottom: 1.4em; }
+    .stories-text p:first-of-type::first-letter {
+      font-size: 3.4em;
+      font-weight: 500;
+      float: left;
+      line-height: .9;
+      padding: .12em .12em 0 0;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .stories-divider {
+      display: block;
+      margin: 40px auto;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,164,78,.5), transparent);
+    }
+    .stories-quote {
+      font-style: italic;
+      color: var(--gold-light);
+      text-align: center;
+      font-size: 1.15em;
+      padding: 20px 28px;
+      border-left: 2px solid rgba(201,164,78,.4);
+      border-right: 2px solid rgba(201,164,78,.4);
+      margin: 28px 0;
+    }
+    .stories-quote-cite {
+      display: block;
+      font-style: normal;
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+      margin-top: 10px;
+    }
+    .stories-signature {
+      font-style: italic;
+      color: var(--cream-dim);
+      text-align: right;
+      margin-top: 2em;
+      font-size: 1.1em;
+    }
+    .stories-section[hidden] { display: none; }
 
     /* ── Video tribute section ────────────────────────────── */
     .video-section {
@@ -807,7 +847,8 @@
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 540px) {
       section { padding: 52px 20px; }
-      .carousel-section { padding: 52px 20px; }
+      .gallery-section { padding: 52px 16px; }
+      .stories-section { padding: 52px 22px; }
       .video-section { padding: 52px 20px; }
       .page-border { inset: 6px; }
       .pillar,
@@ -1142,93 +1183,6 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       PHOTO CAROUSEL
-  ══════════════════════════════════════════════════════════ -->
-  <div class="carousel-section">
-    <div class="divider">
-      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
-        <line x1="0" y1="9" x2="35" y2="9"/>
-        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
-        <line x1="95" y1="9" x2="120" y2="9"/>
-        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
-      </svg>
-    </div>
-
-    <p class="section-label">Galería · Gallery</p>
-    <h2 class="section-title">Momentos que Perduran</h2>
-
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carouselTrack">
-
-        <!-- Slide 1 — main portrait -->
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/oWqfj9U.jpg" alt="José Fernando Rodríguez" />
-          <div class="carousel-caption">José Fernando Rodríguez · 1954–2026</div>
-        </div>
-
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/CovsSrn.jpg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/TfSMnK6.jpg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/hYkdXCR.jpg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/FRKzklY.jpg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/aLuP1Je.jpg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/UEs40Qq.png" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/Wv7W2xq.png" alt="José Fernando Rodríguez con su familia" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/7G6XCOl.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/PAfjN0b.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/WtQvIFf.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/mQEKK5O.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/Rl7GV1e.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://i.imgur.com/BbLmvYE.jpeg" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="images/IMG_2198.JPG" alt="José Fernando Rodríguez" />
-        </div>
-        <div class="carousel-slide">
-          <img src="images/PhotoPass_Visiting_Epcot_7664181796.jpg" alt="José Fernando Rodríguez en Epcot" />
-        </div>
-        <div class="carousel-slide">
-          <img src="images/ChatGPT%20Image%20May%206%2C%202026%20at%2009_56_01%20AM.png" alt="José Fernando Rodríguez" />
-        </div>
-
-      </div>
-
-      <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      </button>
-      <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
-      </button>
-    </div>
-
-    <div class="carousel-dots" id="carouselDots"></div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════
        VIDEO TRIBUTE
   ══════════════════════════════════════════════════════════ -->
   <div class="video-section">
@@ -1249,7 +1203,7 @@
         controls
         preload="metadata"
         playsinline
-        poster="https://i.imgur.com/oWqfj9U.jpg"
+        poster="photos/photo-01.webp"
         title="Video Tribute — José Fernando Rodríguez"
       >
         <source src="dad-tribute.mp4" type="video/mp4" />
@@ -1259,6 +1213,100 @@
 
     <p class="video-caption">En memoria de un padre, esposo y abuelo amado.</p>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PHOTO GALLERY (Masonry)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="gallery-section" id="galeria">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Galería · Gallery</p>
+    <h2 class="section-title">Momentos que Perduran</h2>
+
+    <div class="masonry" id="masonryGrid"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LIFE STORIES — Long-form personal narrative
+  ══════════════════════════════════════════════════════════ -->
+  <section class="stories-section" id="historias">
+    <div class="divider">
+      <svg class="ornament-sm ornament" viewBox="0 0 120 18">
+        <line x1="0" y1="9" x2="35" y2="9"/>
+        <path d="M35,9 Q45,2 55,9 Q65,16 75,9 Q85,2 95,9"/>
+        <line x1="95" y1="9" x2="120" y2="9"/>
+        <circle cx="60" cy="9" r="2" fill="#c9a44e" stroke="none"/>
+      </svg>
+    </div>
+
+    <p class="section-label">Historias de su Vida · Life Stories</p>
+    <h2 class="section-title">The Road He Traveled</h2>
+
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="showStoryLang('en', this)">English</button>
+      <button class="lang-btn"        onclick="showStoryLang('es', this)">Español</button>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="stories-text" id="stories-en">
+      <p>Dad never sat still. Mom knew this before she married him and said yes anyway.</p>
+
+      <p>José Fernando Rodríguez was born January 5, 1954 in Havana, Cuba, to Zenón Rodríguez García and Clotilde "Ita" Alvarez Alsina. He was one of four siblings: María Elena, Zenón, Jorge, and Carie. When his family had the chance to leave Cuba, dad stayed behind. He was of draft age and couldn't follow. So he told them to go without him. He didn't make a speech about it. He just did what needed doing and figured out the rest later. That was dad.</p>
+
+      <p>He had been loosely studying the Bible with a brother in the neighborhood, not taking it too seriously. Then he got drafted into the Cuban military and his long hippie hair got cut. Walking past the brother's house one day, still in uniform, the brother saw him and called out: "You would cut your hair for Fidel, but not for Jehovah?" That was it. He started taking his faith seriously after that.</p>
+
+      <p>He was released. Then in 1980 a government official came to his door during the Mariel boatlift and gave him a few hours to get to the port. He was put on a ship to Florida alongside convicted criminals and others the government wanted gone. The nights on the water were so dark he couldn't see his hand. During the day, sharks circled the wreckage of rafts that had broken apart nearby. Some people were pulled onto the boat. Some weren't.</p>
+
+      <p>He made it to Tampa. He found his family.</p>
+
+      <p>He was baptized as one of Jehovah's Witnesses and eventually served as a ministerial servant and then as an elder, not because he wanted a title, but because he genuinely wanted to help people. If someone in the congregation was struggling, he showed up. He had a voice that filled a room and a conviction that wouldn't let him stay quiet when something needed saying.</p>
+
+      <p>He married Lourdes on July 11, 1981. They had forty-four years together.</p>
+
+      <p>By trade he was a welder. A good one. His company sent him across Florida to fix what others got wrong. He worked with his hands and he took pride in doing the job right.</p>
+
+      <p>The road trips are what we'll remember.</p>
+
+      <p>Dad's goal was all 50 states. He made it to 46. Hawaii, New Hampshire, Nebraska, and North Dakota will have to wait. His method was the AAA tour book. Before every trip he'd circle every diamond rating he could find and build a route around them. That's how we ended up at Meteor Crater, an extinct volcano somewhere in New Mexico, Mammoth Caverns, the Grand Tetons, Dinosaur National Park.</p>
+
+      <p>The rules of the road were simple. You stop for gas. You stop for food. You stop for the bathroom. You do not stop because you are tired.</p>
+
+      <p>One vacation started in the Poconos and ended in Kentucky because dad didn't like where we'd booked and decided we were going somewhere else. We made it past St. Louis before tornado warnings forced a reroute. We ended up in Mammoth Caverns and then Gatlinburg, which became one of his favorite places anywhere. He loved mountains. He didn't hike them much. He just liked being near them.</p>
+
+      <p>Once we drove from Florida to the Grand Canyon. Straight through. We stood at the south rim for about two hours and then he said it was time to go. We were furious. We'd come all that way. But for dad the trip was never about the destination. It was about how much you could see before the road ran out.</p>
+
+      <p>We made it to Yellowstone eventually. Long loop through Wyoming, back down through Denver. By the time we hit Dinosaur National Park we begged him not to stop. He stopped anyway. He was right to.</p>
+
+      <p>On the way to the Smokies one trip, he explained how plants breathe. How they take in what we exhale and give back what we need. He said it was one of the most elegant things God had ever designed. We were kids. We didn't forget it.</p>
+
+      <hr class="stories-divider" />
+
+      <p>The road finally ran out on May 3, 2026.</p>
+
+      <p>But we hold on to what he believed. Job put it simply: "If a man dies, can he live again?" Then he answered his own question with everything he had left. We believe dad will drive again. We believe he'll find the missing four states.</p>
+
+      <blockquote class="stories-quote">
+        "And the ransomed ones of Jehovah will return and come to Zion with a joyful cry… and grief and sighing will flee away."
+        <cite class="stories-quote-cite">Isaiah 35:10</cite>
+      </blockquote>
+
+      <p>We'll keep going. He taught us how.</p>
+
+      <p class="stories-signature">— Lourdes, José Jr., and Raquel</p>
+    </div>
+
+    <!-- SPANISH placeholder — translate later -->
+    <div class="stories-text" id="stories-es" hidden>
+      <p style="text-align:center; color: var(--cream-dim); font-style: italic;">La traducción al español está en preparación. Por favor, revise la versión en inglés mientras tanto.</p>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════
        CLOSING SCRIPTURE
@@ -1288,6 +1336,23 @@
   <!-- ═══════════════════════════════════════════════════════
        FOOTER
   ══════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════
+       LIGHTBOX (for masonry gallery)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event, true)" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="lightbox-btn lightbox-prev" onclick="navigateLightbox(-1, event)" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightboxImg" alt="" />
+    <button class="lightbox-btn lightbox-next" onclick="navigateLightbox(1, event)" aria-label="Next">
+      <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+    </button>
+    <p class="lightbox-counter" id="lightboxCounter"></p>
+  </div>
+
   <footer>
     <p class="footer-name">José Fernando Rodríguez</p>
     <p class="footer-years">1954 &nbsp;&mdash;&nbsp; 2026</p>
@@ -1297,44 +1362,67 @@
        SCRIPT
   ══════════════════════════════════════════════════════════ -->
   <script>
-    /* ── Carousel ── */
-    const track = document.getElementById('carouselTrack');
-    const dotsWrap = document.getElementById('carouselDots');
-    const slides = track ? track.children : [];
-    let current = 0;
-
-    function buildDots() {
-      dotsWrap.innerHTML = '';
-      Array.from(slides).forEach((_, i) => {
-        const d = document.createElement('button');
-        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        d.setAttribute('aria-label', 'Slide ' + (i + 1));
-        d.onclick = () => goTo(i);
-        dotsWrap.appendChild(d);
-      });
+    /* ── Masonry gallery render ── */
+    const TOTAL_PHOTOS = 65;
+    const photoUrl = i => `photos/photo-${String(i).padStart(2, '0')}.webp`;
+    const masonryGrid = document.getElementById('masonryGrid');
+    if (masonryGrid) {
+      for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+        const item = document.createElement('div');
+        item.className = 'masonry-item';
+        item.innerHTML = `<img src="${photoUrl(i)}" alt="Memoria ${i}" loading="lazy" />`;
+        item.onclick = () => openLightbox(i - 1);
+        masonryGrid.appendChild(item);
+      }
     }
 
-    function goTo(n) {
-      current = (n + slides.length) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
-        d.classList.toggle('active', i === current)
-      );
+    /* ── Lightbox ── */
+    let lbCurrent = 0;
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCounter = document.getElementById('lightboxCounter');
+
+    function openLightbox(idx) {
+      lbCurrent = idx;
+      updateLightbox();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
-
-    function moveCarousel(dir) { goTo(current + dir); }
-
-    /* auto-advance every 5 s */
-    if (slides.length) {
-      buildDots();
-      setInterval(() => moveCarousel(1), 5000);
+    function updateLightbox() {
+      lbImg.src = photoUrl(lbCurrent + 1);
+      if (lbCounter) lbCounter.textContent = `${lbCurrent + 1} / ${TOTAL_PHOTOS}`;
     }
+    function navigateLightbox(dir, e) {
+      e && e.stopPropagation();
+      lbCurrent = (lbCurrent + dir + TOTAL_PHOTOS) % TOTAL_PHOTOS;
+      updateLightbox();
+    }
+    function closeLightbox(e, force) {
+      if (force || (e && e.target === lb)) {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (!lb || !lb.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox(null, true);
+      if (e.key === 'ArrowLeft')   navigateLightbox(-1, e);
+      if (e.key === 'ArrowRight')  navigateLightbox(1, e);
+    });
 
-    /* ── Fade-up observer ── */
+    /* ── Language toggle for obituary ── */
     function showLang(lang, btn) {
       document.getElementById('obit-es').hidden = (lang !== 'es');
       document.getElementById('obit-en').hidden = (lang !== 'en');
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.parentElement.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    /* ── Language toggle for life stories ── */
+    function showStoryLang(lang, btn) {
+      document.getElementById('stories-es').hidden = (lang !== 'es');
+      document.getElementById('stories-en').hidden = (lang !== 'en');
+      btn.parentElement.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
 
