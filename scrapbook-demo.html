@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrapbook Demo · José Fernando Rodríguez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Caveat:wght@400;500;600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep:  #162820;
+      --green-mid:   #1e3328;
+      --gold:        #c9a44e;
+      --gold-light:  #dfc07a;
+      --cream:       #f4edda;
+      --cream-dim:   #c8b98a;
+      --polaroid-bg: #f8f1de;
+      --tape:        rgba(220, 200, 130, .55);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(42,66,53,.4) 0%, transparent 70%),
+        var(--green-deep);
+      color: var(--cream);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      padding: 60px 20px 100px;
+    }
+
+    /* paper-grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: .8;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--cream-dim);
+      font-size: 1.05rem;
+    }
+
+    .ornament {
+      display: block;
+      margin: 28px auto;
+      width: 160px; height: 22px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1;
+      opacity: .6;
+    }
+
+    /* ── Scrapbook grid ──────────────────────────────────── */
+    .scrapbook {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 50px 30px;
+      position: relative;
+      z-index: 1;
+      padding: 30px 10px;
+    }
+
+    .polaroid {
+      position: relative;
+      background: var(--polaroid-bg);
+      padding: 14px 14px 50px;
+      box-shadow:
+        0 4px 6px rgba(0,0,0,.3),
+        0 12px 28px rgba(0,0,0,.45);
+      cursor: pointer;
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
+      will-change: transform;
+    }
+
+    /* photo inside polaroid */
+    .polaroid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #2a2a2a;
+      filter: sepia(.05) contrast(1.02);
+    }
+
+    /* handwritten caption */
+    .polaroid-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: #4a3a25;
+      line-height: 1;
+    }
+
+    /* random rotations — applied via nth-child */
+    .polaroid:nth-child(7n+1) { transform: rotate(-3.2deg); }
+    .polaroid:nth-child(7n+2) { transform: rotate(2.4deg);  }
+    .polaroid:nth-child(7n+3) { transform: rotate(-1.6deg); }
+    .polaroid:nth-child(7n+4) { transform: rotate(4deg);    }
+    .polaroid:nth-child(7n+5) { transform: rotate(-2.8deg); }
+    .polaroid:nth-child(7n+6) { transform: rotate(1.8deg);  }
+    .polaroid:nth-child(7n+7) { transform: rotate(-4.2deg); }
+
+    /* tape strip on every 5th photo */
+    .polaroid:nth-child(5n+1)::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 70px;
+      height: 22px;
+      background: var(--tape);
+      box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    }
+    .polaroid:nth-child(11n+5)::before {
+      left: 30%;
+      transform: translateX(-50%) rotate(-12deg);
+    }
+    .polaroid:nth-child(13n+8)::before {
+      left: 70%;
+      transform: translateX(-50%) rotate(8deg);
+    }
+
+    /* hover lift */
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05) translateY(-6px);
+      box-shadow:
+        0 8px 12px rgba(0,0,0,.4),
+        0 24px 60px rgba(0,0,0,.6);
+      z-index: 5;
+    }
+
+    /* ── Lightbox ──────────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 18, 13, .95);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      animation: fadeIn .3s ease;
+    }
+    .lightbox.open { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      box-shadow: 0 20px 80px rgba(0,0,0,.8);
+      border: 12px solid var(--polaroid-bg);
+      border-bottom-width: 50px;
+      animation: pop .35s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes pop {
+      from { opacity: 0; transform: scale(.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .lightbox-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(201,164,78,.4);
+      color: var(--gold);
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .lightbox-btn:hover { background: rgba(201,164,78,.2); }
+    .lightbox-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(201,164,78,.4);
+      color: var(--gold);
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .25em;
+      color: var(--gold);
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 40px 16px 80px; }
+      .scrapbook { gap: 36px 16px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .polaroid { padding: 10px 10px 36px; }
+      .polaroid-caption { font-size: 1rem; bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <p class="label">Demo · Scrapbook Style</p>
+    <h1 class="title">Momentos que Perduran</h1>
+    <p class="subtitle">A scattered scrapbook of memories — tap any photo to enlarge.</p>
+    <svg class="ornament" viewBox="0 0 160 22">
+      <line x1="0" y1="11" x2="50" y2="11"/>
+      <path d="M50,11 Q60,3 70,11 Q80,19 90,11 Q100,3 110,11"/>
+      <line x1="110" y1="11" x2="160" y2="11"/>
+      <circle cx="80" cy="11" r="2.5" fill="#c9a44e" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="scrapbook" id="scrapbook"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event, true)" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="lightbox-btn lightbox-prev" onclick="navigate(-1, event)" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightboxImg" alt="" />
+    <button class="lightbox-btn lightbox-next" onclick="navigate(1, event)" aria-label="Next">
+      <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+    </button>
+    <p class="lightbox-counter" id="lightboxCounter"></p>
+  </div>
+
+  <script>
+    /* Build the polaroids dynamically */
+    const total = 73;
+    const board = document.getElementById('scrapbook');
+    for (let i = 1; i <= total; i++) {
+      const num = String(i).padStart(2, '0');
+      const card = document.createElement('div');
+      card.className = 'polaroid';
+      card.innerHTML = `
+        <img src="photos/photo-${num}.webp" alt="Memory ${i}" loading="lazy" />
+        <p class="polaroid-caption">&nbsp;</p>
+      `;
+      card.onclick = () => openLightbox(i - 1);
+      board.appendChild(card);
+    }
+
+    /* Lightbox logic */
+    let currentIdx = 0;
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCounter = document.getElementById('lightboxCounter');
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      updateLightbox();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightbox() {
+      const num = String(currentIdx + 1).padStart(2, '0');
+      lbImg.src = `photos/photo-${num}.webp`;
+      lbCounter.textContent = `${currentIdx + 1} / ${total}`;
+    }
+
+    function navigate(dir, e) {
+      e.stopPropagation();
+      currentIdx = (currentIdx + dir + total) % total;
+      updateLightbox();
+    }
+
+    function closeLightbox(e, force) {
+      if (force || e.target === lb) {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox(null, true);
+      if (e.key === 'ArrowLeft')  navigate(-1, e);
+      if (e.key === 'ArrowRight') navigate(1, e);
+    });
+  </script>
+
+</body>
+</html>
