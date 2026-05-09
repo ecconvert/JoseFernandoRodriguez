@@ -1005,6 +1005,19 @@
       box-shadow: 0 12px 50px rgba(0,0,0,.55);
       background: #000;
     }
+
+    .video-frame + .video-frame {
+      margin-top: 56px;
+    }
+
+    .video-title {
+      font-family: 'Cinzel', serif;
+      font-size: .78rem;
+      letter-spacing: .22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin: 42px 0 -18px;
+    }
     .video-frame::after {
       content: '';
       position: absolute;
@@ -1384,6 +1397,7 @@
     <p class="section-label">Tributo en Video · Video Tribute</p>
     <h2 class="section-title">Su Vida en Movimiento</h2>
 
+    <p class="video-title">Versión Original · Original Version</p>
     <div class="video-frame">
       <video
         controls
@@ -1398,6 +1412,22 @@
     </div>
 
     <p class="video-caption">En memoria de un padre, esposo y abuelo amado.</p>
+
+    <p class="video-title">Versión Extendida Dual · Longer Dual Version</p>
+    <div class="video-frame">
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        poster="photos/photo-01.webp"
+        title="Longer Dual Video Tribute — José Fernando Rodríguez"
+      >
+        <source src="dad-tribute-longer-dual.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p class="video-caption">Una versión extendida en español e inglés para recordar su vida con más momentos compartidos.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
